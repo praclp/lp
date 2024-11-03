@@ -1,38 +1,37 @@
-# Global counter for steps
+
 COUNT = 0
 
-# Recursive Fibonacci function with step count
+# Recursive Fibonacci 
 def recur_fibo(n):
     global COUNT
-    COUNT += 1  # Increment step count for each function call
+    COUNT += 1
     if n <= 1:
         return n
     else:
         return recur_fibo(n - 1) + recur_fibo(n - 2)
 
-# Iterative Fibonacci function with step count
+# Iterative Fibonacci 
 def fib_iterative(n):
     global COUNT
-    COUNT = 0  # Reset count for iterative approach
+    COUNT = 0 
     first, sec = 0, 1
     series = []
     if n <= 0:
         return "Please enter a positive integer.", COUNT
     elif n == 1:
         series = [0]
-        COUNT += 1  # For first comparison
+        COUNT += 1 
         return series, COUNT
     else:
         for _ in range(n):
             series.append(first)
-            COUNT += 1  # For appending to series
+            COUNT += 1 
             nth = first + sec
             first, sec = sec, nth
-            COUNT += 3  # For addition and assignments
+            COUNT += 3
 
     return series, COUNT
 
-# Main function to handle menu and user input
 def main():
     while True:
         global COUNT
@@ -50,16 +49,14 @@ def main():
                 print("Please enter a positive integer.")
                 continue
 
-            COUNT = 0  # Reset count before each run
+            COUNT = 0 
 
             if choice == 1:
-                # Iterative Fibonacci
                 series, steps = fib_iterative(n)
                 print("Fibonacci Series:", series)
                 print("Steps required using Counter:", steps)
 
             elif choice == 2:
-                # Recursive Fibonacci
                 series = []
                 for i in range(n):
                     series.append(recur_fibo(i))
